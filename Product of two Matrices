@@ -1,0 +1,57 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	cout << "Enter the Row and Column for the First Matrix" << endl;
+	int rowa, rowb, columna, columnb;
+	cin >> rowa >> columna;
+	int a[rowa][columna];
+
+	for (int i = 0; i < rowa; ++i)
+	{
+		for (int j = 0; j < columna; j++) {
+			cin >> a[i][j];
+		}
+	}
+
+	cout << "Enter the Row and Column for the Second Matrix" << endl;
+	cin >> rowb >> columnb;
+	int b[rowb][columnb];
+
+	for (int i = 0; i < rowb; ++i)
+	{
+		for (int j = 0; j < columnb; j++) {
+			cin >> b[i][j];
+		}
+	}
+
+	int product[rowa][columnb];
+
+	if (columna == rowb) {
+		int sum;
+		cout << "Matrix Multiplication: " << endl;
+
+		for (int i = 0; i < rowa; i++) {
+			for (int j = 0; j < columnb; j++) {
+				for (int k = 0; k < rowb; k++) {
+					sum += a[i][k] * b[k][j];
+				}
+				product[i][j] = sum;
+				//cout << sum << " ";
+				sum = 0;
+			}
+		}
+		for (int i = 0; i < rowa; i++) {
+			for (int j = 0; j < columnb; j++) {
+				cout << product[i][j] << " ";
+			}
+			cout << endl;
+		}
+	}
+	else cout << "Multiplication Not possible!" << endl;
+
+	return 0;
+}
+
+
+
