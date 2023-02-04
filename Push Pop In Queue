@@ -1,0 +1,35 @@
+#include <iostream>
+//using namespace std;
+#define max_size 100
+
+int data[max_size];
+int end = 0;
+int start = 0;
+
+void push(int val) {
+    if (end <= max_size - 1) {
+        data[end] = val;
+        end++;
+    }
+    else std::cout << "Overflow" << std::endl;
+}
+void pop() {
+    if (start < end) {
+        std::cout << data[start] << std::endl;
+        start++;
+    }
+    else std::cout << "Underflow" << std::endl;
+}
+
+int main() {
+    push(5);
+    push(6);
+    push(7);
+    pop();
+    pop();
+    pop();
+    pop();
+  
+    return 0;
+}
+
