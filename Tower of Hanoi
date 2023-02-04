@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void towerOfHanoi(int n, char start, char end,
+                  char aux)
+{
+	if (n == 0) {
+		return;
+	}
+	towerOfHanoi(n - 1, start, aux, end);
+	cout << "Move disk " << n << " from " << start
+	     << " to " << end << endl;
+	towerOfHanoi(n - 1, aux, end, start);
+}
+
+int main()
+{
+	int N = 3;
+	towerOfHanoi(N, 'A', 'C', 'B');
+	return 0;
+}
+
