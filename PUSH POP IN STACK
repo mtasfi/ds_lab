@@ -1,0 +1,36 @@
+
+
+
+#include <iostream>
+//using namespace std;
+#define MAX 100
+
+int data[MAX];
+int stack_size = 0;
+
+void push(int val) {
+    if (stack_size == MAX) {
+        std::cout << "OVERFLOW" << std::endl;
+        return;
+    }
+    data[stack_size] = val;
+    stack_size++;
+}
+int pop() {
+    if (stack_size == 0) {
+        std::cout << "UNDERFLOW ";
+        return -1;
+    }
+    stack_size--;
+    return data[stack_size];
+}
+
+int main() {
+    push(5);
+    push(6);
+    std::cout << pop() << std::endl;
+    std::cout << pop() << std::endl;
+    std::cout << pop() << std::endl;
+    return 0;
+}
+
