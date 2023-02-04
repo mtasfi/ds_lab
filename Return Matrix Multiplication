@@ -1,0 +1,68 @@
+
+#include<iostream>
+using namespace std;
+#define MAX 100
+int rowa, rowb, columna, columnb;
+int product[MAX][MAX];
+int a[MAX][MAX];
+int b[MAX][MAX];
+
+
+
+void matrixf() {
+	if (columna == rowb) {
+		int sum;
+		cout << "Matrix Multiplication: " << endl;
+
+		for (int i = 0; i < rowa; i++) {
+			for (int j = 0; j < columnb; j++) {
+				for (int k = 0; k < rowb; k++) {
+					sum += a[i][k] * b[k][j];
+				}
+				product[i][j] = sum;
+				//cout << sum << " ";
+				sum = 0;
+			}
+		}
+
+	}
+
+}
+
+int main() {
+	cout << "Enter the Row and Column for the First Matrix" << endl;
+
+	cin >> rowa >> columna;
+
+	for (int i = 0; i < rowa; ++i)
+	{
+		for (int j = 0; j < columna; j++) {
+			cin >> a[i][j];
+		}
+	}
+
+	cout << "Enter the Row and Column for the Second Matrix" << endl;
+	cin >> rowb >> columnb;
+
+	for (int i = 0; i < rowb; ++i)
+	{
+		for (int j = 0; j < columnb; j++) {
+			cin >> b[i][j];
+		}
+	}
+
+	matrixf();
+
+	if (columna == rowb) {
+		for (int i = 0; i < rowa; i++) {
+			for (int j = 0; j < columnb; j++) {
+				cout << product[i][j] << " ";
+			}
+			cout << endl;
+		}
+	}
+	else cout << "Multiplication Not possible!" << endl;
+
+	return 0;
+}
+
