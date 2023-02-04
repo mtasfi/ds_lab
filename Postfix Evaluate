@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int isOperator(char ch) {
+   if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^')
+      return 1;
+   return 0;
+}
+
+float operation(int a, int b, char op) {
+   if (op == '+')
+      return b + a;
+   else if (op == '-')
+      return b - a;
+   else if (op == '*')
+      return b * a;
+   else if (op == '/')
+      return b / a;
+   else if (op == '^')
+      return pow(b, a);
+}
+
+float postfixEval(string postfix) {
+   int a, b;
+   stack<float> stk;
+
+   for (int i = 0; i < postfix.size(); i++) {
+
+      if (isOperator(postfix[i])) {
+         a = stk.top();
+         stk.pop();
+         b = stk.top();
+         stk.pop();
+         stk.push(operation(a, b, postfix[i]));
+      }
+      else stk.push(postfix[i] - '0');
+   }
+   return stk.top();
+}
+
+main() {
+   string post = "653-/215+*+";
+   cout << "The result is: " << postfixEval(post);
+}
+
